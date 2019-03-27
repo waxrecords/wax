@@ -52,7 +52,7 @@ def nightTube():
 
     # return true if weekend between 23:00 and 05:00, otherwise return false
     if ((d.isoweekday() in range(5, 7)) and (d.hour not in range(5, 23))):
-        pp("Night Tube Function: OK")
+
         return True
 
     return False
@@ -123,8 +123,6 @@ def update():
 def tflstatus():
 
     update()
-
-    pp(hidenight)
 
     return render_template('index.html', zip=zip, lines=lines, status=status, lineid=lineid, icons=icons, addstatus=addstatus, addicons=addicons, hideadd=hideadd, nighticon=nighticon, hidenight=hidenight)
 
