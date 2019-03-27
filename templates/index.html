@@ -1,0 +1,79 @@
+{% extends 'base.html' %} {% block title %}TfL Status{% endblock %} {% block
+content %}
+<ul class="line-wrap spread-list">
+  <h3 class="line underground status-header">Underground Status</h3>
+  {% for line, status, addstatus, lineid, icons, addicons, hideadd, nighticon,
+  hidenight in zip(lines, status, addstatus, lineid, icons, addicons, hideadd,
+  nighticon, hidenight) %}
+  <li class="line-container unselectable">
+    <div class="spread">
+      <div class="row">
+        <div class="col-auto no-right-pad">
+          <span class="spread">
+            <a
+              style="cursor: default"
+              class="line {{ lineid }} no-right-marg"
+              href="/tflstatus/{{ lineid }}"
+            >
+              {{ line }}</a
+            >
+          </span>
+        </div>
+        <div class="col-auto no-left-pad">
+          <span class="spread indent-left float-right unselectable">
+            <a
+              tabindex="0"
+              role="button"
+              class="line {{ lineid }} unselectable"
+              style="margin-top: -5px;"
+              data-container="body"
+              data-toggle="popover"
+              data-trigger="focus"
+              title="Status"
+              data-content="{{ status }}"
+            >
+              <i class="{{ icons }}"></i>
+            </a>
+          </span>
+        </div>
+        <div class="col-auto no-left-pad night-icon {{ hideadd }}">
+          <span class="spread indent-left float-right unselectable">
+            <a
+              tabindex="0"
+              role="button"
+              class="line {{ lineid }} unselectable"
+              style="margin-top: -5px;"
+              data-toggle="popover"
+              data-trigger="focus"
+              title="Status"
+              data-content="{{ addstatus }}"
+            >
+              <i class="icons {{ addicons }}"></i>
+            </a>
+          </span>
+        </div>
+        <div class="col-auto no-left-pad night-icon {{ hidenight }}">
+          <span class="spread indent-left float-right unselectable">
+            <span
+              class="line {{ lineid }} unselectable"
+              style="margin-top: -5px;"
+            >
+              <i class="icons {{ nighticon }}"></i>
+            </span>
+          </span>
+        </div>
+        <a class="col-auto ml-auto no-left-pad" href="/tflstatus/{{ lineid }}">
+          <span
+            class="line {{ lineid }} no-right-marg"
+            style="padding-left: 10px; padding-right: 10px;"
+          >
+            <i class="fas fa-angle-right"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+  </li>
+  <!-- <div class="status-container not-active"></div> -->
+  {% endfor %}
+</ul>
+{% endblock %}

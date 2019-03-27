@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block title %}{{ line }} Status{% endblock %} {%
+block content %}
+<div class="line-wrap col-12" style="overflow-y: scroll; min-height: 100vh">
+  <div class="row justify-content-between header">
+    <div class="col-auto">
+      <div class="line-container unselectable">
+        <a class="line {{ lineid }}" href="/tflstatus"> {{ line }} Line </a>
+      </div>
+    </div>
+
+    <a class="col-auto ml-auto no-left-pad" href="/tflstatus">
+      <span class="line {{ lineid }} no-right-marg" style="cursor: pointer; ">
+        <i
+          style="padding-left: 2.5px; padding-right: 2.5px;"
+          class="fas fa-times"
+        ></i>
+      </span>
+    </a>
+  </div>
+  <div class="row status-body">{{ status }}</div>
+</div>
+<div class="line-wrap fadeout"></div>
+{% endblock %}

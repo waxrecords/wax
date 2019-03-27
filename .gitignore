@@ -1,0 +1,7 @@
+__pycache__/
+
+instance/
+
+flask_venv/
+
+.vscode/
