@@ -12,7 +12,7 @@ import os
 requests_cache.install_cache(
     'tfl_api_cache', backend='sqlite', expire_after=60)
 
-app = Flask(__name__, instance_relative_config=True)
+app = Flask(__name__, instance_relative_config=False)
 app.config.from_object('config')
 app.config.from_pyfile('config.py')
 
