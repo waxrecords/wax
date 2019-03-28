@@ -7,8 +7,8 @@ import datetime
 import json
 import os
 
-# cache data request from TFL API call for 1 minute
-# set relatively low as travel updates change regularly
+# cache data request from TFL API call, expires after 1 minute
+# expire set relatively low as travel updates change regularly
 requests_cache.install_cache(
     'tfl_api_cache', backend='sqlite', expire_after=60)
 
@@ -38,19 +38,23 @@ lines = ["Bakerloo", "Central", "Circle", "District", "H'Smith & City", "Jubliee
          "Metropolitan", "Northern", "Piccadilly", "Victoria", "Waterloo & City"]
 
 # initialises empty lists for the tube lines various status'
-# these will be populated with the respones from TFL API
+# these will be populated with the respones from TFL API, as well as CSS classes
 # could have implemented better, packing everything into a JSON (ran out of time)
-# as we have a fixed number of tube lines (11) we can use while operators to populate each list with the correct item e.g. bakerloo is always status[1], addstatus[1], etc.
 
-status = [""] * 11  # TFL status
-icons = [""] * 11   # we will add a CSS class value here later
+# as we have a fixed number of tube lines (11) we can use while operators to 
+# populate each list with the correct item e.g. bakerloo is always position [0] in lists
+
+status = [""] * 11      # TFL status
+icons = [""] * 11       # we will add a CSS class value here later
 addstatus = [""] * 11   # TFL additional status'
 addicons = [""] * 11    # if there are additional status' we will add a CSS class value here later
-hideadd = [""] * 11  # if there are no additional status' we will add a hide CSS class value here later
-night = [""] * 11   # TFL night service
+hideadd = [""] * 11     # if there are no additional status' we will add a hide CSS class value here later
+night = [""] * 11       # TFL night service
 nighticon = [""] * 11   # if line has night service we will add a CSS class value here later
 hidenight = [""] * 11   # if line has no night service we will add a hide CSS class value here later
-closed = ["Service Closed"]   # if service is closed we will add a CSS class value here later
+
+# if service is closed we will add a CSS class value here later
+closed = ["Service Closed"]
 
 # if within night tube hours e.g. friday - saturday between 23:00 and 05:00 returns true
 def nightTube():
@@ -86,6 +90,7 @@ def update(mode):
         return(otherdata)
 
 # extracts the status, additional status and night service data from tubedata for each line
+# adds them to their respective lists
 def getdata(x):
 
     i = 0
@@ -106,7 +111,7 @@ def getdata(x):
 
         i += 1
 
-
+# adds the CSS classes to their respective lists
 def addicon():
 
     x = 0
@@ -145,7 +150,7 @@ def addicon():
 
         x += 1
 
-
+# redirect to /tube 
 @app.route('/')
 def redir():
     return redirect(url_for('tflstatus'))
@@ -182,7 +187,7 @@ def linepage(linesid):
 
     return render_template('404.html'), 404
 
-
+# error handling
 @app.errorhandler(404)
 @app.errorhandler(500)
 def page_not_found(e):
