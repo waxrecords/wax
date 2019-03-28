@@ -97,11 +97,63 @@ a:hover {
   font-size: 1.25em;
 }
 
-.underground {
+.otherheader {
   background-color: #0019a8;
   border: solid 3px #0019a8;
   border-radius: 3px;
   padding: 5px;
+  color: white;
+}
+
+.headerbutton {
+  background-color: #3b2bc1;
+  border: solid 3px #3b2bc1;
+  border-radius: 3px;
+  padding: 5px;
+  color: white;
+}
+
+.headerbutton:hover {
+  border: solid 3px #4333cc;
+  color: white;
+}
+
+.dlr {
+  background-color: #b26300;
+  border: solid 3px #b26300;
+  border-radius: 3px;
+  padding: 5px;
+  color: white;
+}
+
+.dlr:hover {
+  border: solid 3px #9c5600;
+  color: white;
+}
+
+.overground {
+  background-color: #b26300;
+  border: solid 3px #b26300;
+  border-radius: 3px;
+  padding: 5px;
+  color: white;
+}
+
+.overground:hover {
+  border: solid 3px #9c5600;
+  color: white;
+}
+
+.tram {
+  background-color: #b26300;
+  border: solid 3px #b26300;
+  border-radius: 3px;
+  padding: 5px;
+  color: white;
+}
+
+.tram:hover {
+  border: solid 3px #9c5600;
   color: white;
 }
 
@@ -374,7 +426,8 @@ a:hover {
 }
 
 .fadeout {
-  border-top: solid 1px white;
+  border: solid 1px#e6e6e6;
+  border-top-style: none;
   box-shadow: none;
   position: relative;
   bottom: 4em;
