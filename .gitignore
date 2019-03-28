@@ -5,3 +5,5 @@ instance/
 flask_venv/
 
 .vscode/
+
+tfl_api_cache.sqlite
